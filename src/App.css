@@ -1,0 +1,81 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+body * {
+  box-sizing: border-box;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.card {
+  border: 3px solid black;
+  width: calc(20% - 20px);
+  margin: 10px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: soft-light;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.word {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center ;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.word:first-child {
+  transform: rotate(180deg);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.count {
+  margin-right: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
