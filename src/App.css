@@ -5,15 +5,15 @@ html {
   height: -webkit-fill-available;
 }
 
-#root {
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
+/*#root {*/
+/*  position: fixed;*/
+/*  height: 100%;*/
+/*  overflow: auto;*/
+/*}*/
 
 .main {
   width: 100%;
-  height: -webkit-fill-available;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -95,6 +95,9 @@ body * {
 }
 
 @media (max-width: 800px) {
+  .main {
+    height: auto;
+  }
   .card {
     width: calc(20% - 6px);
     height: 50px;
