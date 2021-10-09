@@ -2,11 +2,12 @@ import classNames from "classnames/bind";
 import spyBackground from '../../images/spy-male.png'
 import personBackground from '../../images/person-male-skin-type-3.png'
 import killBackground from '../../images/venom-head.png'
+import {GRAY_COLOR} from "../../constants";
 
 const Card = ({word, onClick, color, isOpened = false }) => {
     let background;
     switch (color) {
-        case '#ccc':
+        case GRAY_COLOR:
             background = personBackground;
          break;
         case 'black':

@@ -8,6 +8,7 @@ import classNames from "classnames/bind";
 import background from "./images/operatsija-vnedrenie-0.jpeg";
 import killBackground from "./images/04102019_manyak.jpeg";
 import 'normalize.css/normalize.css'
+import {BLUE_COLOR, CARDS_COUNT, GRAY_COLOR, RED_COLOR, TOTAL_CARDS} from "./constants";
 
 function getRandomArrayElements(arr, count) {
   let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
@@ -38,13 +39,13 @@ function App() {
     teams: [
       {
         name: 'team 1',
-        color: '#f44336',
+        color: RED_COLOR,
         openedCards: [],
         allCards: [],
       },
       {
         name: 'team 2',
-        color: '#2196f3',
+        color: BLUE_COLOR,
         openedCards: [],
         allCards: []
       }
@@ -55,11 +56,6 @@ function App() {
     isCapitanView: false,
     killCard: null
   });
-
-  const CARDS_COUNT = 8;
-  const TOTAL_CARDS = 25;
-
-
 
   useEffect(() => {
     setState((s) => {
@@ -124,10 +120,10 @@ function App() {
               return <Card
                   key={w}
                   word={w}
-                  color={color || (isOpened ? '#ccc' : '#fff')}
+                  color={color || (isOpened ? GRAY_COLOR : '#fff')}
                   isOpened={isOpened}
                   onClick={() => {
-                    if (state.isCapitanView) {
+                    if (state.isCapitanView || isOpened) {
                       return
                     }
                     setState((s) => {

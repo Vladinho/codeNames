@@ -1,15 +1,14 @@
 body {
   min-height: -webkit-fill-available;
+  height: 100%;
 }
 html {
   height: -webkit-fill-available;
 }
 
-/*#root {*/
-/*  position: fixed;*/
-/*  height: 100%;*/
-/*  overflow: auto;*/
-/*}*/
+#root {
+  height: 100%;
+}
 
 .main {
   width: 100%;
@@ -96,7 +95,7 @@ body * {
 
 @media (max-width: 1000px) {
   .main {
-    height: 100%;
+    height: auto;
   }
   .card {
     width: calc(20% - 6px);
