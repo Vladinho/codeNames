@@ -96,7 +96,7 @@ body * {
 
 @media (max-width: 800px) {
   .main {
-    height: auto;
+    height: 100%;
   }
   .card {
     width: calc(20% - 6px);
@@ -128,7 +128,7 @@ body * {
 
   .wrapper {
     padding: 0;
-    height: auto;
+    height: 100%;
   }
 }
 
