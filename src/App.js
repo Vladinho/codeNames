@@ -90,7 +90,6 @@ function App() {
         <div className={'wrapper'}
             style={{
           backgroundColor: !state.isCapitanView && !isKill && state.teams[state.currentTeam]?.color && hexToRgbA(state.teams[state.currentTeam]?.color, 0.5),
-          height: '100%',
         }}>
           <div className={'counter'}>
             {
