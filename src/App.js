@@ -9,6 +9,8 @@ import background from "./images/operatsija-vnedrenie-0.jpeg";
 import king from "./images/fairytale.png";
 import killBackground from "./images/04102019_manyak.jpeg";
 import reload from "./images/external-reload-mintab-for-ios-becris-lineal-becris.png";
+import show from "./images/visible.png";
+import hide from "./images/hide.png";
 import 'normalize.css/normalize.css'
 import {BLUE_COLOR, CARDS_COUNT, GRAY_COLOR, RED_COLOR, TOTAL_CARDS} from "./constants";
 
@@ -113,19 +115,19 @@ function App() {
             <div className={'counters'}>
               {
                 state.teams.map(t => (
-                    <div className={'count'} style={{ color: t.color }} key={t.name}>
+                    <h2 className={classNames('count', 'h2')} style={{ color: t.color }} key={t.name}>
                       {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
                       {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
-                    </div>
+                    </h2>
                 ))
               }
             </div>
             <div>
               <button
-                  className={classNames('btn', 'btn-secondary')}
+                  className={classNames('btn', 'btn-light')}
                   onClick={() => setState((s) => ({ ...s, isCapitanView: !s.isCapitanView}))}
               >
-                {state.isCapitanView ? 'Скрыть карточки' : 'Показать карточки'}
+                <img src={state.isCapitanView ? hide : show } width={20} height={20} alt={'visibility'}/>
               </button>
               <button
                   className={classNames('btn', 'btn-light')}
@@ -137,7 +139,7 @@ function App() {
                     }
                   })}
               >
-                <img src={reload} width={10} height={10} alt={'reload'}/>
+                <img src={reload} width={15} height={15} alt={'reload'}/>
               </button>
             </div>
           </div>
