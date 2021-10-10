@@ -2,6 +2,11 @@ body {
   min-height: -webkit-fill-available;
   height: 100%;
 }
+
+iframe {
+  display: none !important;
+}
+
 html {
   height: -webkit-fill-available;
 }
