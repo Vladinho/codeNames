@@ -41,6 +41,7 @@ body * {
 
 .card {
   border: 3px solid black;
+  opacity: 0.9;
   width: calc(20% - 20px);
   margin: 10px;
   height: 100px;
@@ -112,7 +113,6 @@ body * {
     width: calc(20% - 6px);
     height: 50px;
     margin: 3px;
-    opacity: 0.9;
   }
 
   .word {
