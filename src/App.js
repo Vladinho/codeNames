@@ -159,7 +159,6 @@ function App() {
                       return
                     }
                     setState((s) => {
-                      const isSuccess = state.teams[state.currentTeam].allCards.some(c => c === w);
                       const teams = s.teams.map((t) => {
                         const isGot = t.allCards.some((c) => c === w) || isKillCard;
                         return isGot ? {
@@ -170,7 +169,6 @@ function App() {
                       return {
                         ...s,
                         teams,
-                        currentTeam: isSuccess || isKillCard ? s.currentTeam : s.teams.indexOf(s.teams[s.currentTeam === s.teams.length - 1 ? 0 : s.currentTeam + 1]),
                         openedWords: [...s.openedWords, w],
                       }
                     })
