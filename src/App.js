@@ -8,6 +8,7 @@ import classNames from "classnames/bind";
 import background from "./images/operatsija-vnedrenie-0.jpeg";
 import king from "./images/fairytale.png";
 import killBackground from "./images/04102019_manyak.jpeg";
+import reload from "./images/external-reload-mintab-for-ios-becris-lineal-becris.png";
 import 'normalize.css/normalize.css'
 import {BLUE_COLOR, CARDS_COUNT, GRAY_COLOR, RED_COLOR, TOTAL_CARDS} from "./constants";
 
@@ -55,12 +56,14 @@ function App() {
     currentTeam: null,
     openedWords: [],
     isCapitanView: false,
-    killCard: null
+    killCard: null,
+    allWords: [...allWords],
+    game: 0
   });
 
   useEffect(() => {
     setState((s) => {
-      const words = getRandomArrayElements(allWords, TOTAL_CARDS);
+      const words = getRandomArrayElements(s.allWords, TOTAL_CARDS);
       const currentTeam = s.teams.indexOf(getRandomArrayElements(s.teams, 1)[0]);
       let filteredWords = words;
       const teams = s.teams.map((t, index) => {
@@ -68,17 +71,25 @@ function App() {
         filteredWords = filteredWords.filter(w => allCards.every((c) => c !== w));
         return {
           ...t,
+          openedCards: [],
           allCards,
         }
       })
+      const killCard = getRandomArrayElements(filteredWords, 1)[0];
+      const allLocalWords = s.allWords.filter((i) => s.words.every(j => j !== i));
       return {
         ...s,
         teams,
         words,
         currentTeam,
-        killCard: getRandomArrayElements(filteredWords, 1)[0]
+        killCard,
+        allWords: allLocalWords.length > TOTAL_CARDS ? allLocalWords : allWords
       }
     });
+  }, [state.game]);
+
+  useEffect(() => {
+    setState((s) => ({...s, game: 1}))
   }, [])
 
   const isKill = state.openedWords.some(w => w === state.killCard);
@@ -89,28 +100,42 @@ function App() {
           backgroundColor: !state.isCapitanView && !isKill && state.teams[state.currentTeam]?.color && hexToRgbA(state.teams[state.currentTeam]?.color, 0.5),
         }}>
           <div className={'counter'}>
-            {
-              state.teams.map(t => (
-                  <div className={'count'} style={{ color: t.color }}>
-                    {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
-                    {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
-                  </div>
-              ))
-            }
-          </div>
-          <div className={'buttons'}>
             <button
                 className={classNames('btn', 'btn-primary')}
                 onClick={() => setState((s) => ({ ...s, currentTeam: s.teams.indexOf(s.teams[s.currentTeam === s.teams.length - 1 ? 0 : s.currentTeam + 1])}))}
             >
               Закончить ход
             </button>
-            <button
-                className={classNames('btn', 'btn-secondary')}
-                onClick={() => setState((s) => ({ ...s, isCapitanView: !s.isCapitanView}))}
-            >
-              {state.isCapitanView ? 'Скрыть карточки' : 'Показать карточки'}
-            </button>
+            <div className={'counters'}>
+              {
+                state.teams.map(t => (
+                    <div className={'count'} style={{ color: t.color }} key={t.name}>
+                      {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
+                      {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
+                    </div>
+                ))
+              }
+            </div>
+            <div>
+              <button
+                  className={classNames('btn', 'btn-secondary')}
+                  onClick={() => setState((s) => ({ ...s, isCapitanView: !s.isCapitanView}))}
+              >
+                {state.isCapitanView ? 'Скрыть карточки' : 'Показать карточки'}
+              </button>
+              <button
+                  className={classNames('btn', 'btn-light')}
+                  style={{marginLeft: '10px'}}
+                  onClick={() => setState((s) => {
+                    return {
+                      ...s,
+                      game: s.game + 1
+                    }
+                  })}
+              >
+                <img src={reload} width={10} height={10} />
+              </button>
+            </div>
           </div>
           <div className={'cards'}>
             {state.words.map((w) => {
