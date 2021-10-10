@@ -40,25 +40,45 @@ body * {
 }
 
 .card {
-  border: 3px solid black;
-  opacity: 0.9;
   width: calc(20% - 20px);
-  margin: 10px;
-  height: 100px;
+  position: relative;
+  transition: all 0.3s ease-in;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent !important;
+  overflow: hidden;
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.word-wrapper {
+  position: absolute;
+  margin: 10px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease-in;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-blend-mode: soft-light;
+  z-index: 2;
+}
+
+.card img {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.3;
+  width: 50px;
 }
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
 }
 
 .word {
@@ -68,6 +88,14 @@ body * {
   width: 100%;
   text-align: center ;
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.isOpened .word {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.isOpened .word:first-child {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .word:first-child {

@@ -18,15 +18,18 @@ const Card = ({word, onClick, color, isOpened = false }) => {
     }
     return (
         <div
-            className={classNames('card', 'animate__animated', {'animate__flipInY': isOpened})}
-            onClick={onClick} style={{
+            className={classNames('card', 'animate__animated', {'animate__flipInY': isOpened, 'isOpened': isOpened})}
+            onClick={onClick}>
+            {isOpened && <img src={background} alt={word}/>}
+            <div className={'background'} style={{
                 backgroundColor: color,
-                backgroundImage: `url(${isOpened && background})`,
-                backgroundBlendMode: background === killBackground ? 'unset' : 'soft-light',
+            }}/>
+            <div className={'word-wrapper'} style={{
                 color: background === killBackground && '#fff'
-        }}>
-            <div className={'word'}>{word}</div>
-            <div className={'word'}>{word}</div>
+            }}>
+                <div className={'word'}>{word}</div>
+                <div className={'word'}>{word}</div>
+            </div>
         </div>
     )
 }
