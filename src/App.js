@@ -47,12 +47,14 @@ function App() {
         color: RED_COLOR,
         openedCards: [],
         allCards: [],
+        isFirst: null
       },
       {
         name: 'team 2',
         color: BLUE_COLOR,
         openedCards: [],
-        allCards: []
+        allCards: [],
+        isFirst: null
       }
     ],
     words: [],
@@ -69,10 +71,12 @@ function App() {
       const words = getRandomArrayElements(s.allWords, TOTAL_CARDS);
       const currentTeam = s.teams.indexOf(getRandomArrayElements(s.teams, 1)[0]);
       const { teams, filteredWords } = s.teams.reduce((acc, cur, index) => {
-          const allCards = getRandomArrayElements(acc.filteredWords, index === currentTeam ? CARDS_COUNT + 1 : CARDS_COUNT);
+          const isFirst = index === currentTeam;
+          const allCards = getRandomArrayElements(acc.filteredWords, isFirst ? CARDS_COUNT + 1 : CARDS_COUNT);
           acc.teams.push({
             ...cur,
             allCards,
+            isFirst,
             openedCards: [],
           })
           acc.filteredWords = acc.filteredWords.filter(w => allCards.every((c) => c !== w));
@@ -104,14 +108,14 @@ function App() {
       <div className={'main'} style={{backgroundImage: `url(${isKill ? killBackground : background})`}}>
         <div className={'wrapper'}
             style={{
-          backgroundColor: !state.isCapitanView && !isKill && state.teams[state.currentTeam]?.color && hexToRgbA(state.teams[state.currentTeam]?.color, 0.5),
+          backgroundColor: hexToRgbA(state.isCapitanView ? state.teams.find(t => t.isFirst)?.color : '#595A5C', 0.8),
         }}>
           <div className={'counter'}>
             <button
-                className={classNames('btn', 'btn-primary')}
-                onClick={() => setState((s) => ({ ...s, currentTeam: s.teams.indexOf(s.teams[s.currentTeam === s.teams.length - 1 ? 0 : s.currentTeam + 1])}))}
+                className={classNames('btn', 'btn-light')}
+                onClick={() => setState((s) => ({ ...s, isCapitanView: !s.isCapitanView}))}
             >
-              Закончить ход
+              <img src={state.isCapitanView ? hide : show } width={20} height={20} alt={'visibility'}/>
             </button>
             <div className={'counters'}>
               {
@@ -123,26 +127,18 @@ function App() {
                 ))
               }
             </div>
-            <div>
-              <button
-                  className={classNames('btn', 'btn-light')}
-                  onClick={() => setState((s) => ({ ...s, isCapitanView: !s.isCapitanView}))}
-              >
-                <img src={state.isCapitanView ? hide : show } width={20} height={20} alt={'visibility'}/>
-              </button>
-              <button
-                  className={classNames('btn', 'btn-light')}
-                  style={{marginLeft: '10px'}}
-                  onClick={() => setState((s) => {
-                    return {
-                      ...s,
-                      game: s.game + 1
-                    }
-                  })}
-              >
-                <img src={reload} width={15} height={15} alt={'reload'}/>
-              </button>
-            </div>
+            <button
+                className={classNames('btn', 'btn-light')}
+                style={{marginLeft: '10px'}}
+                onClick={() => setState((s) => {
+                  return {
+                    ...s,
+                    game: s.game + 1
+                  }
+                })}
+            >
+              <img src={reload} width={15} height={15} alt={'reload'}/>
+            </button>
           </div>
           <div className={'cards'}>
             {state.words.map((w) => {
