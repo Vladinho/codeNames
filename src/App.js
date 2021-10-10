@@ -83,6 +83,7 @@ function App() {
         words,
         currentTeam,
         killCard,
+        openedWords: [],
         allWords: allLocalWords.length > TOTAL_CARDS ? allLocalWords : allWords
       }
     });
@@ -133,7 +134,7 @@ function App() {
                     }
                   })}
               >
-                <img src={reload} width={10} height={10} />
+                <img src={reload} width={10} height={10} alt={'reload'}/>
               </button>
             </div>
           </div>
