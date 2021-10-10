@@ -22,7 +22,8 @@ const Card = ({word, onClick, color, isOpened = false }) => {
             onClick={onClick} style={{
                 backgroundColor: color,
                 backgroundImage: `url(${isOpened && background})`,
-                backgroundBlendMode: background === killBackground ? 'unset' : 'soft-light'
+                backgroundBlendMode: background === killBackground ? 'unset' : 'soft-light',
+                color: background === killBackground && '#fff'
         }}>
             <div className={'word'}>{word}</div>
             <div className={'word'}>{word}</div>
