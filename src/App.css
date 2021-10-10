@@ -41,6 +41,8 @@ body * {
 
 .card {
   width: calc(20% - 20px);
+  height: 100px;
+  margin: 5px;
   position: relative;
   transition: all 0.3s ease-in;
   display: flex;
