@@ -98,9 +98,6 @@ body * {
 }
 
 @media (max-width: 1000px) {
-  .main {
-    height: auto;
-  }
   .card {
     width: calc(20% - 6px);
     height: 50px;
