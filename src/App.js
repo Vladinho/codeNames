@@ -65,18 +65,21 @@ function App() {
     setState((s) => {
       const words = getRandomArrayElements(s.allWords, TOTAL_CARDS);
       const currentTeam = s.teams.indexOf(getRandomArrayElements(s.teams, 1)[0]);
-      let filteredWords = words;
-      const teams = s.teams.map((t, index) => {
-        const allCards = getRandomArrayElements(filteredWords, index === currentTeam ? CARDS_COUNT + 1 : CARDS_COUNT);
-        filteredWords = filteredWords.filter(w => allCards.every((c) => c !== w));
-        return {
-          ...t,
-          openedCards: [],
-          allCards,
-        }
+      const { teams, filteredWords } = s.teams.reduce((acc, cur, index) => {
+          const allCards = getRandomArrayElements(acc.filteredWords, index === currentTeam ? CARDS_COUNT + 1 : CARDS_COUNT);
+          acc.teams.push({
+            ...cur,
+            allCards,
+            openedCards: [],
+          })
+          acc.filteredWords = acc.filteredWords.filter(w => allCards.every((c) => c !== w));
+          return acc;
+      }, {
+        teams: [],
+        filteredWords: words
       })
       const killCard = getRandomArrayElements(filteredWords, 1)[0];
-      const allLocalWords = s.allWords.filter((i) => s.words.every(j => j !== i));
+      const allLocalWords = s.allWords.filter((i) => words.every(j => j !== i));
       return {
         ...s,
         teams,

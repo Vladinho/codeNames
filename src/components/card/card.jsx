@@ -18,7 +18,7 @@ const Card = ({word, onClick, color, isOpened = false }) => {
     }
     return (
         <div
-            className={classNames('card', 'animate__animated', {'animate__flipInY': isOpened, 'isOpened': isOpened})}
+            className={classNames('card', 'animate__animated', 'animate__backInRight', {'animate__flipInY': isOpened, 'isOpened': isOpened})}
             onClick={onClick}>
             {isOpened && <img src={background} alt={word}/>}
             <div className={'background'} style={{
