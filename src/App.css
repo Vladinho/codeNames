@@ -99,6 +99,13 @@ body * {
 }
 
 @media (max-width: 1000px) {
+  .main {
+    width: 100%;
+    height: calc(100% + 30px);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
   .card {
     width: calc(20% - 6px);
     height: 50px;
@@ -125,6 +132,9 @@ body * {
     position: static;
     font-size: 16px;
     padding: 0;
+    margin-bottom: -32px;
+    height: 36px;
+    align-items: center;
   }
 
   .wrapper {
