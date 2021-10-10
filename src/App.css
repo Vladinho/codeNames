@@ -88,6 +88,22 @@ body * {
 
 .count {
   margin-right: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.king {
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  top: -8px;
+  background-position: center;
+  background-size: cover;
+  animation-name: move;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
 }
 
 .buttons {
@@ -151,5 +167,20 @@ body * {
     width: calc(33% - 6px);
     height: 50px;
     margin: 3px;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translate3d(0px, 0px, 0px)
+  }
+  30% {
+    transform: translate3d(10px, 5px, 10px)
+  }
+  60% {
+    transform: translate3d(-10px, 5px, -10px)
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px)
   }
 }
