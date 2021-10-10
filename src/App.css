@@ -17,7 +17,7 @@ html {
 
 .main {
   width: 100%;
-  height: calc(100% + 70px);
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -25,8 +25,7 @@ html {
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 40px;
+  justify-content: flex-start;
   height: -webkit-fill-available;
 }
 
@@ -82,10 +81,8 @@ body * {
   font-size: 30px;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 10px;
-  position: absolute;
   width: 100%;
-  top: 0;
+  margin-bottom: -60px;
 }
 
 .count {
@@ -96,6 +93,7 @@ body * {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 1000px) {
@@ -104,6 +102,10 @@ body * {
     height: calc(100% + 60px);
     background-size: cover;
     background-repeat: no-repeat;
+  }
+
+  .buttons {
+    margin-bottom: 5px;
   }
 
   .card {
