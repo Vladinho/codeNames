@@ -27,6 +27,8 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   height: -webkit-fill-available;
+  width: 100%;
+  overflow: hidden;
 }
 
 body * {
@@ -185,6 +187,10 @@ body * {
   .wrapper {
     padding: 0;
     height: 100%;
+  }
+
+  .count {
+    font-size: 14px;
   }
 }
 

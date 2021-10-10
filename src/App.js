@@ -115,10 +115,10 @@ function App() {
             <div className={'counters'}>
               {
                 state.teams.map(t => (
-                    <h2 className={classNames('count', 'h2')} style={{ color: t.color }} key={t.name}>
+                    <div className={'count'} style={{ color: t.color }} key={t.name}>
                       {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
                       {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
-                    </h2>
+                    </div>
                 ))
               }
             </div>
