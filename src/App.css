@@ -130,7 +130,7 @@ body * {
   width: 20px;
   height: 10px;
   position: absolute;
-  top: -8px;
+  top: -6px;
   background-position: center;
   background-size: cover;
   animation-name: move;
@@ -192,6 +192,10 @@ body * {
   .count {
     font-size: 14px;
   }
+
+  .king {
+    width: 15px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -207,10 +211,10 @@ body * {
     transform: translate3d(0px, 0px, 0px)
   }
   30% {
-    transform: translate3d(10px, 5px, 10px)
+    transform: translate3d(5px, 2px, 5px)
   }
   60% {
-    transform: translate3d(-10px, 5px, -10px)
+    transform: translate3d(-2px, 2px, -5px)
   }
   100% {
     transform: translate3d(0px, 0px, 0px)
