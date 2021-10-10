@@ -101,7 +101,7 @@ body * {
 @media (max-width: 1000px) {
   .main {
     width: 100%;
-    height: calc(100% + 30px);
+    height: calc(100% + 50px);
     background-size: cover;
     background-repeat: no-repeat;
   }
