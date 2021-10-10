@@ -3,7 +3,8 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'animate.css/animate.css';
 import Card from "./components/card/card";
-import allWords from "./allWords";
+// import allWords from "./allWords";
+import allWords from "./bigWordsBase";
 import classNames from "classnames/bind";
 import background from "./images/operatsija-vnedrenie-0.jpeg";
 import king from "./images/fairytale.png";
