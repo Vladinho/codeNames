@@ -108,7 +108,7 @@ function App() {
       <div className={'main'} style={{backgroundImage: `url(${isKill ? killBackground : background})`}}>
         <div className={'wrapper'}
             style={{
-          backgroundColor: hexToRgbA(state.isCapitanView ? state.teams.find(t => t.isFirst)?.color : '#595A5C', 0.8),
+          backgroundColor: !isKill && hexToRgbA(state.isCapitanView ? state.teams.find(t => t.isFirst)?.color : '#595A5C', 0.6),
         }}>
           <div className={'counter'}>
             <button
