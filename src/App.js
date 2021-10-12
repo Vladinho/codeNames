@@ -126,7 +126,8 @@ function App() {
             </button>
             <div className={'counters'}>
               {
-                state.teams.map(t => (
+                state.teams.sort((a, b) => b.allCards.length - a.allCards.length)
+                    .map(t => (
                     <div className={'count'} style={{ color: t.color }} key={t.name}>
                       {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
                       {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
@@ -193,12 +194,13 @@ function App() {
             </button>
             <div className={'counters'}>
               {
-                state.teams.map(t => (
-                    <div className={'count'} style={{ color: t.color }} key={t.name}>
-                      {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
-                      {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
-                    </div>
-                ))
+                state.teams.sort((a, b) => b.allCards.length - a.allCards.length)
+                    .map(t => (
+                        <div className={'count'} style={{ color: t.color }} key={t.name}>
+                          {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
+                          {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
+                        </div>
+                    ))
               }
             </div>
             <button
