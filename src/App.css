@@ -29,6 +29,8 @@ html {
   height: -webkit-fill-available;
   width: 100%;
   overflow: hidden;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 body * {
@@ -39,11 +41,12 @@ body * {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+  height: -webkit-fill-available;
 }
 
 .card {
   width: calc(20% - 20px);
-  height: 100px;
+  height: calc(20% - 20px);
   margin: 5px;
   position: relative;
   transition: all 0.3s ease-in;
@@ -62,9 +65,8 @@ body * {
 
 .word-wrapper {
   position: absolute;
-  margin: 10px;
   width: 100%;
-  height: 100px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,9 +91,12 @@ body * {
 .word {
   padding: 10px;
   font-size: 20px;
+  height: 50%;
   font-weight: bold;
   width: 100%;
-  text-align: center ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -116,8 +121,12 @@ body * {
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.8);
   width: 100%;
-  margin-bottom: 10px;
   box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.3);
+}
+
+.counterBottom {
+  margin: 0;
+  transform: rotate(180deg);
 }
 
 .count {
@@ -147,10 +156,16 @@ body * {
   padding: 0 10px;
 }
 
+.button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 1000px) {
   .main {
     width: 100%;
-    height: calc(100% + 60px);
+    /*height: calc(100% + 60px);*/
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -161,14 +176,13 @@ body * {
 
   .card {
     width: calc(20% - 6px);
-    height: 50px;
+    height: calc(100%/5 - 8px);
     margin: 3px;
   }
 
   .word {
     font-size: 12px;
     width: 100%;
-    height: 25px;
     padding: 0;
   }
 
@@ -181,13 +195,13 @@ body * {
     position: static;
     font-size: 16px;
     padding: 0 5px;
-    height: 36px;
+    height: 50px;
     align-items: center;
   }
 
   .wrapper {
     padding: 0;
-    height: 100%;
+    /*height: 100%;*/
   }
 
   .count {
@@ -202,7 +216,7 @@ body * {
 @media (max-width: 500px) {
   .card {
     width: calc(33% - 6px);
-    height: 50px;
+    height: calc(100%/8 - 18px);
     margin: 3px;
   }
 }

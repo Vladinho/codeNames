@@ -99,7 +99,14 @@ function App() {
     });
   }, [state.game]);
 
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
   useEffect(() => {
+    setVh();
+    window.addEventListener('resize', setVh);
     setState((s) => ({...s, game: 1}))
   }, [])
 
@@ -176,6 +183,36 @@ function App() {
                   }
               />
             })}
+          </div>
+          <div className={classNames('counter', 'counterBottom')}>
+            <button
+                className={classNames('btn', 'btn-light')}
+                onClick={() => setState((s) => ({ ...s, isCapitanView: !s.isCapitanView}))}
+            >
+              <img src={state.isCapitanView ? hide : show } width={20} height={20} alt={'visibility'}/>
+            </button>
+            <div className={'counters'}>
+              {
+                state.teams.map(t => (
+                    <div className={'count'} style={{ color: t.color }} key={t.name}>
+                      {t.openedCards.filter(c => c !== state.killCard).length === t.allCards.length && <div className={'king'} style={{backgroundImage: `url(${king})`}} />}
+                      {t.openedCards.filter(c => c !== state.killCard).length}/{t.allCards.length}
+                    </div>
+                ))
+              }
+            </div>
+            <button
+                className={classNames('btn', 'btn-light')}
+                style={{marginLeft: '10px'}}
+                onClick={() => setState((s) => {
+                  return {
+                    ...s,
+                    game: s.game + 1
+                  }
+                })}
+            >
+              <img src={reload} width={15} height={15} alt={'reload'}/>
+            </button>
           </div>
         </div>
       </div>
